@@ -2,7 +2,6 @@
   Once you complete a problem, refresh ./nesting.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
-
   You can refresh the page at any time to re-run all the tests.
 */
 
@@ -52,6 +51,17 @@ var employees = [
 
 //Code Here
 
+function employeeUpdater(){
+  for(let i = 0; i < employees.length; i++){
+    if(employees[i].firstName === "Theo"){
+      delete employees[i]
+    } else if(employees[i].firstName === "Lorie"){
+      employees[i].department = "HR"
+    }
+  } 
+  return employees
+}
+
 
 
 ////////// PROBLEM 2 //////////
@@ -70,7 +80,16 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 //Code Here
 
-
+function removeDuplicates(arr){
+  for(let i = 0; i < arr.length; i++){
+    for(let j = i + 1; j < arr.length; j++){
+      if(arr[i] === arr[j]){
+        arr.splice(j, 1)
+      }
+    }
+  }
+  return arr
+} 
 
 ////////// PROBLEM 3 //////////
 
@@ -97,10 +116,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
-
-
+var grumpyActivity = cat.catFriends[0].activities[1]
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 ////////// PROBLEM 4 //////////
 
@@ -140,7 +157,15 @@ var myCar = {
 
 //Code Here
 
-
+function recordCleaner(){
+  for(let key in myCar) {
+    if (typeof myCar[key] === "object") {
+      for (let prop in myCar[key]) {
+        myCar[key][prop].atFaultForAccident = false;
+      }
+    }
+  }
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -159,4 +184,15 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 
 //Code Here
 
-
+function looper () {
+  numsArr.forEach((element) => {
+    for (let i = 0; i < element.length; i++) {
+      if (element[i] % 2 === 0) {
+        element[i] = "even";
+      } else {
+        element[i] = "odd";
+      }
+    }
+  })
+  return numsArr;
+}
